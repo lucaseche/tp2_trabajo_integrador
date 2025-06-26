@@ -1,12 +1,11 @@
 import express from "express"
+import dotenv from 'dotenv'
 import Router from "./routes/movies.route.js"
-//import dotenv from "dotenv"
 
 dotenv.config()
 
 const app = express()
-//const PORT = process.env.PORT
-const PORT = 8080
+const PORT = process.env.PORT
 
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))

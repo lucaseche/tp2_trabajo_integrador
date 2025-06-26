@@ -17,7 +17,11 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "express": "^5.1.0"
+    "dotenv": "^16.6.0",
+    "express": "^5.1.0",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.17.0"
   },
   "bugs": {
     "url": "https://github.com/lucaseche/tp2_trabajo_integrador/issues"
