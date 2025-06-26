@@ -1,0 +1,26 @@
+{
+  "name": "tp2_trabajo_integrador",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node .",
+    "watch": "node --watch .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucaseche/tp2_trabajo_integrador.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "bugs": {
+    "url": "https://github.com/lucaseche/tp2_trabajo_integrador/issues"
+  },
+  "homepage": "https://github.com/lucaseche/tp2_trabajo_integrador#readme"
+}
