@@ -1,7 +1,7 @@
 import { MongoClient } from "mongodb"
 
 class MongoConnection {
-    static client = new MongoClient("mongodb+srv://<tu_usuario>:<tu_clave>@clustertest.yjhytvq.mongodb.net/?retryWrites=true&w=majority&appName=<tu_cluster>")
+    static client = new MongoClient("mongodb+srv://admin:1234@sergiodbct.1fypdz2.mongodb.net/?retryWrites=true&w=majority&appName=SergioDBCT")
     static db = this.client.db("tp2")
 
     static connection = async () => {
