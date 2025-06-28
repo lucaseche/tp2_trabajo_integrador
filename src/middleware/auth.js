@@ -9,7 +9,7 @@ const generateToken = async (data) => {
     //payload -> cualquier proceso que contenga información delicada
     //Bcrypt
     const payload = {
-        email: data.email,
+        username: data.username,
         password: data.password
     }
     //objeto con info del usuario + mi clave de app + si expira, en cuanto tiempo

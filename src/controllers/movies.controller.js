@@ -6,12 +6,6 @@ class PeliculaController{
         this.service = new PeliculaService()
     }
 
-    login = async (req, res) => {
-        const data = req.headers
-        const generateTkn = await authMidd.generateToken(data)
-        res.send(generateTkn)
-    }
-
     getPeliculas = async (req, res) => {
         const peliculas = await this.service.getPeliculas()
         res.send(peliculas)

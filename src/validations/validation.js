@@ -10,6 +10,13 @@ const peliculaSchema = Joi.object({
         "Romance")).min(1).required()
 });
 
+const UserSchema = Joi.object({
+  _id: Joi.string().optional(),
+  username: Joi.string.required(),
+  password: Joi.string().required()
+});
+
 export default {
-  peliculaSchema
+  peliculaSchema,
+  UserSchema
 };

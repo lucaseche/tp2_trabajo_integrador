@@ -1,4 +1,3 @@
-// src/index.js
 import express from "express";
 import dotenv from 'dotenv';
 import Router from "./routes/movies.route.js";
@@ -11,8 +10,8 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const movieRoutes = new Router().start();
-app.use("/", movieRoutes);
+const routes = new Router().start();
+app.use("/", routes);
 
 app.use((req, res) => {
     res.status(404).json({
