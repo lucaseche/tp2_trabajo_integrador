@@ -1,7 +1,10 @@
 import { MongoClient } from "mongodb"
+import dotenv from "dotenv";
+
+dotenv.config();
 
 class MongoConnection {
-    static client = new MongoClient("mongodb+srv://admin:1234@sergiodbct.1fypdz2.mongodb.net/?retryWrites=true&w=majority&appName=SergioDBCT")
+    static client = new MongoClient(process.env.MONGO_URI);
     static db = this.client.db("tp2")
 
     static connection = async () => {
