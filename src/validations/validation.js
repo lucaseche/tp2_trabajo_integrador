@@ -12,7 +12,7 @@ const peliculaSchema = Joi.object({
 
 const UserSchema = Joi.object({
   _id: Joi.string().optional(),
-  username: Joi.string.required(),
+  username: Joi.string().required(),
   password: Joi.string().required()
 });
 

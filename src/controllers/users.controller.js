@@ -7,7 +7,7 @@ class UserController{
     }
 
     login = async (req, res) => {
-        const data = req.headers
+        const data = req.body
         const generateTkn = await authMidd.generateToken(data)
         res.send(generateTkn)
     }
