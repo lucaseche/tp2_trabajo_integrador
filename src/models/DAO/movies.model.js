@@ -7,15 +7,15 @@ class PeliculasModel{
     }
 
     getPeliculas = async () => {
-        return await this.db.collection("peliculas").find({}).toArray()
+        return await this.db.collection("movies").find({}).toArray()
     }
 
     createPelicula = async (pelicula) => {
-        return await this.db.collection("peliculas").insertOne(pelicula)
+        return await this.db.collection("movies").insertOne(pelicula)
     }
 
     putPelicula = async (id, data) => {
-        const update = await this.db.collection("peliculas").replaceOne(
+        const update = await this.db.collection("movies").replaceOne(
             {_id: ObjectId.createFromHexString(id)}, data
         )
         return update
@@ -29,7 +29,7 @@ class PeliculasModel{
             return update
         }
     deletePelicula = async (id) => {
-        const peliculaDelete = await this.db.collection("peliculas").deleteOne(
+        const peliculaDelete = await this.db.collection("movies").deleteOne(
             {_id: ObjectId.createFromHexString(id)}
         )
         return peliculaDelete
