@@ -12,13 +12,14 @@ class Router {
 
     start() {
         this.router.get("/peliculas", authMidd.verifyToken, this.movieController.getPeliculas);
-        this.router.post("/peliculas", this.movieController.postPelicula);
-        this.router.put("/peliculas/update/all/:id", this.movieController.putPelicula);
-        this.router.patch("/peliculas/update/:id", this.movieController.patchPelicula);
-        this.router.delete("/peliculas/delete/:id", this.movieController.deletePelicula);
+        this.router.get("/peliculasSinToken",this.movieController.getPeliculas);
+        this.router.post("/peliculas",authMidd.verifyToken, this.movieController.postPelicula);
+        this.router.put("/peliculas/update/:id",authMidd.verifyToken, this.movieController.putPelicula);
+        this.router.patch("/peliculas/update/:id",authMidd.verifyToken,this.movieController.patchPelicula);
+        this.router.delete("/peliculas/delete/:id",authMidd.verifyToken, this.movieController.deletePelicula);
 
         this.router.post("/login", this.userController.login);
-        this.router.get("/users", this.userController.getUsers);
+        this.router.get("/users", authMidd.verifyToken,this.userController.getUsers);
         this.router.post("/users", this.userController.postUsers);
         this.router.put("/users/update/all/:id", this.userController.putUser);
         this.router.patch("/users/update/:id", this.userController.patchUser);
