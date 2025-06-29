@@ -9,6 +9,11 @@ class UserModel{
     getUsers = async () => {
         return await this.db.collection("users").find({}).toArray()
     }
+    
+getUserByUsername = async (username) => {
+    return await this.db.collection("users").findOne({ userName: username });
+}
+
 
     createUser = async (user) => {
         return await this.db.collection("users").insertOne(user)
