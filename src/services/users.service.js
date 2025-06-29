@@ -10,6 +10,12 @@ class UserService{
         return await this.model.getUsers()
     }
 
+    
+    getUserByName(userName) {
+    return this.model.getUserByUsername({ userName });
+}
+
+
     postUser = async (user) => {
         const validateUser = validation.UserSchema.validate(user)
 
