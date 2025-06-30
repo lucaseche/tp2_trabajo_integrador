@@ -6,11 +6,45 @@ class UserController{
         this.service = new UserService()
     }
 
-    login = async (req, res) => {
-        const data = req.body
+    /*login = async (req, res) => {
+        const data = req.headers
         const generateTkn = await authMidd.generateToken(data)
+        console.log("Generando Token")
         res.send(generateTkn)
     }
+*/
+    
+login = async (req, res) => {
+   
+    console.log(req.body);
+const { userName, password } = req.body;
+console.log(userName+" "+ password);
+
+    try {
+        
+        const user = await this.service.getUserByName(String(userName));
+        console.log(user)
+
+        if (!user) {
+            return res.status(401).send({ error: "Usuario no encontrado" });
+        }
+
+        // Comparar contraseñas (en producción deberías usar bcrypt)
+        if (user.password !== password) {
+            return res.status(401).send({ error: "Contraseña incorrecta" });
+        }
+
+        // Generar token
+        const token = await authMidd.generateToken({ id: user._id, userName: user.userName });
+
+        console.log("Generando Token");
+        res.send({ token });
+    } catch (error) {
+        console.error("Error en login:", error);
+        res.status(500).send({ error: "Error interno del servidorF" });
+    }
+}
+
 
     getUsers = async (req, res) => {
         const users = await this.service.getUsers()
