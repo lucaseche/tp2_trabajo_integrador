@@ -1,37 +1,49 @@
-import validation from "../validations/validation.js";
-import UserModel from "../models/DAO/users.model.js"
+import MongoConnection from "../MongoConnection.js";
+import { ObjectId } from "mongodb";
 
-class UserService{
+class UserModel{
     constructor() {
-        this.model = new UserModel()
+        this.db = MongoConnection.db
     }
 
     getUsers = async () => {
-        return await this.model.getUsers()
+        return await this.db.collection("users").find({}).toArray()
     }
+    
+getUserByUsername = async (userNameParam) => {
+    console.log(userNameParam,"<====En Model :S")
+    
+console.log("Buscando userName:", userNameParam, typeof userNameParam);
 
-    postUser = async (user) => {
-        const validateUser = validation.UserSchema.validate(user)
-
-        if (validateUser.error) {
-            return "Error: " + validateUser.error
-        } else {
-            return await this.model.createUser(user)
-        }
-        
-    }
-
-    putuser = async (id,data) => {
-        return await this.model.putUser(id,data)
-    }
-
-    patchUser = async (id,data) => {
-        return await this.model.patchUser(id,data)
-    }
-
-    deleteUser = async (id) => {
-        return await this.model.deleteUser(id)
-    }
+    return await this.db.collection("users").findOne(userNameParam);
 }
 
-export default UserService
+
+    createUser = async (user) => {
+        return await this.db.collection("users").insertOne(user)
+    }
+
+    putUser = async (id, data) => {
+        const update = await this.db.collection("users").replaceOne(
+            {_id: ObjectId.createFromHexString(id)}, data
+        )
+        return update
+    }
+
+    patchUser = async (id, data) => {
+        const update = await this.db.collection("users").updateOne(
+            {_id: ObjectId.createFromHexString(id)},
+                {$set: data}
+            )
+            return update
+        }
+    deleteUser = async (id) => {
+        const userDelete = await this.db.collection("users").deleteOne(
+            {_id: ObjectId.createFromHexString(id)}
+        )
+        return userDelete
+    }
+
+}
+
+export default UserModel
