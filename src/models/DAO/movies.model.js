@@ -22,7 +22,7 @@ class PeliculasModel{
     }
 
     patchPelicula = async (id, data) => {
-        const update = await this.db.collection("peliculas").updateOne(
+        const update = await this.db.collection("movies").updateOne(
             {_id: ObjectId.createFromHexString(id)},
                 {$set: data}
             )
