@@ -1,49 +1,44 @@
-import MongoConnection from "../MongoConnection.js";
-import { ObjectId } from "mongodb";
+import validation from "../validations/validation.js";
+import UserModel from "../models/DAO/users.model.js"
 
-class UserModel{
+class UserService{
     constructor() {
-        this.db = MongoConnection.db
+        this.model = new UserModel()
     }
 
     getUsers = async () => {
-        return await this.db.collection("users").find({}).toArray()
+        return await this.model.getUsers()
     }
-    
-getUserByUsername = async (userNameParam) => {
-    console.log(userNameParam,"<====En Model :S")
-    
-console.log("Buscando userName:", userNameParam, typeof userNameParam);
 
-    return await this.db.collection("users").findOne(userNameParam);
+    
+   async getUserByName(userName) {
+        console.log(userName)
+    return  await this.model.getUserByUsername({ userName });
 }
 
 
-    createUser = async (user) => {
-        return await this.db.collection("users").insertOne(user)
-    }
+    postUser = async (user) => {
+        const validateUser = validation.UserSchema.validate(user)
 
-    putUser = async (id, data) => {
-        const update = await this.db.collection("users").replaceOne(
-            {_id: ObjectId.createFromHexString(id)}, data
-        )
-        return update
-    }
-
-    patchUser = async (id, data) => {
-        const update = await this.db.collection("users").updateOne(
-            {_id: ObjectId.createFromHexString(id)},
-                {$set: data}
-            )
-            return update
+        if (validateUser.error) {
+            return "Error: " + validateUser.error
+        } else {
+            return await this.model.createUser(user)
         }
-    deleteUser = async (id) => {
-        const userDelete = await this.db.collection("users").deleteOne(
-            {_id: ObjectId.createFromHexString(id)}
-        )
-        return userDelete
+        
     }
 
+    putuser = async (id,data) => {
+        return await this.model.putUser(id,data)
+    }
+
+    patchUser = async (id,data) => {
+        return await this.model.patchUser(id,data)
+    }
+
+    deleteUser = async (id) => {
+        return await this.model.deleteUser(id)
+    }
 }
 
-export default UserModel
+export default UserService
