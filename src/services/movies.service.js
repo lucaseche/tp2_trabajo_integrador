@@ -14,7 +14,7 @@ class PeliculaService{
         const validatePelicula = validation.peliculaSchema.validate(pelicula)
 
         if (validatePelicula.error) {
-            return "Error: " + validatePelicula.error
+            return "ErrRRRRR: " + validatePelicula.error
         } else {
             return await this.model.createPelicula(pelicula)
         }
