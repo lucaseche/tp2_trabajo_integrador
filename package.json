@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node .",
     "watch": "node --watch .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha src/test/users.integration.test.js" 
   },
   "repository": {
     "type": "git",
@@ -26,5 +26,10 @@
   "bugs": {
     "url": "https://github.com/lucaseche/tp2_trabajo_integrador/issues"
   },
-  "homepage": "https://github.com/lucaseche/tp2_trabajo_integrador#readme"
+  "homepage": "https://github.com/lucaseche/tp2_trabajo_integrador#readme",
+  "devDependencies": {
+    "chai": "^5.2.0",
+    "mocha": "^11.7.1",
+    "supertest": "^7.1.1"
+  }
 }
