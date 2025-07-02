@@ -11,6 +11,12 @@ class PeliculaController{
         res.send(peliculas)
     }
 
+       getPeliculasNacionales = async (req, res) => {
+        const peliculasNacionales = await this.service.getPeliculasNacionales()
+        res.send(peliculasNacionales)
+    }
+
+
     postPelicula = async (req, res) => {
         const pelicula = req.body
         const postPelicula = await this.service.postPelicula(pelicula)
