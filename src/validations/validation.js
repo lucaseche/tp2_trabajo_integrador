@@ -2,7 +2,7 @@ import Joi from "joi";
 
 const peliculaSchema = Joi.object({
   name: Joi.string().min(1).max(255).required(),
-  year: Joi.number().integer().min(1888).max(new Date().getFullYear()).required(),
+  year: Joi.number().integer().min(1900).max(new Date().getFullYear()).required(),
   genre: Joi.string().min(1).max(100).required(),
   country: Joi.string().min(1).max(100).required()
 });
