@@ -10,6 +10,10 @@ class PeliculasModel{
         return await this.db.collection("movies").find({}).toArray()
     }
 
+     getPeliculasPorPais = async (pais) => {
+        return await this.db.collection("movies").find({ country: pais }).toArray();
+    }
+
     createPelicula = async (pelicula) => {
         return await this.db.collection("movies").insertOne(pelicula)
     }
