@@ -13,6 +13,7 @@ class Router {
     start() {
         this.router.get("/peliculas", authMidd.verifyToken, this.movieController.getPeliculas);
         this.router.get("/peliculasSinToken",this.movieController.getPeliculas);
+        this.router.get("/peliculasNacionales",authMidd.verifyToken,this.movieController.getPeliculasNacionales);
         this.router.post("/peliculas",authMidd.verifyToken, this.movieController.postPelicula);
         this.router.put("/peliculas/update/:id",authMidd.verifyToken, this.movieController.putPelicula);
         this.router.patch("/peliculas/update/:id",authMidd.verifyToken,this.movieController.patchPelicula);
