@@ -348,8 +348,11 @@ curl -X DELETE http://localhost:8096/peliculas/delete/<ID> \
 
 ## 👥 Autores
 
-Trabajo realizado por el grupo de Taller de Programación 2 – Comisión X  
-Año lectivo: 2025
+- Joaquín Rougé Núñez
+- Patricio Iaccarino
+- Sergio Carbajal
+- Lucas Echeverria
+
 
 ---
 
