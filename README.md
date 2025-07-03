@@ -144,8 +144,6 @@ npm run watch
 - `PUT /api/movies/:id` → Actualizar película
 - `DELETE /api/movies/:id` → Eliminar película
 
-🛠 Las películas se pueden cargar desde una API externa (completar nombre si aplica).
-
 ---
 
 ## 🔐 Autenticación JWT
