@@ -380,10 +380,10 @@ curl -X DELETE http://localhost:8096/peliculas/delete/<ID> \
 
 ## 👥 Autores
 
-- Joaquín Rougé Núñez
-- Patricio Iaccarino
-- Sergio Carbajal
-- Lucas Echeverria
+- Joaquín Rougé Núñez ~ joarouge@gmail.com
+- Patricio Iaccarino ~ patricio.iaccarino@gmail.com
+- Sergio Carbajal ~ sergiocarbajal1991@gmail.com
+- Lucas Echeverria ~lucas.echeverria15@gmail.com
 
 
 ---
