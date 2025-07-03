@@ -20,7 +20,11 @@ Este proyecto fue desarrollado como parte del trabajo integrador final de la mat
     - [Películas](#películas)
   - [🔐 Autenticación JWT](#-autenticación-jwt)
   - [🧪 Testing](#-testing)
-    - [Ejecutar los tests](#ejecutar-los-tests)
+    - [📁 Ubicación](#-ubicación)
+    - [▶️ Ejecutar pruebas](#️-ejecutar-pruebas)
+    - [✅ Casos de éxito testeados](#-casos-de-éxito-testeados)
+    - [❌ Casos de error testeados](#-casos-de-error-testeados)
+    - [📝 Notas](#-notas)
   - [📌 Ejemplos de uso](#-ejemplos-de-uso)
     - [🧑 Usuarios](#-usuarios)
       - [📥 Crear usuario](#-crear-usuario)
@@ -38,7 +42,7 @@ Este proyecto fue desarrollado como parte del trabajo integrador final de la mat
       - [🩹 Actualización parcial de película](#-actualización-parcial-de-película)
       - [🗑 Eliminar película](#-eliminar-película)
   - [👥 Autores](#-autores)
-  - [📌 Notas](#-notas)
+  - [📌 Notas](#-notas-1)
 
 ---
 
@@ -158,17 +162,47 @@ El token se obtiene al hacer login (`POST /api/users/login`).
 
 ## 🧪 Testing
 
-El proyecto incluye pruebas automatizadas con `Mocha`, `Chai` y `Supertest`.
+El proyecto incluye pruebas automatizadas para la entidad **Usuarios**, utilizando:
 
-### Ejecutar los tests
+- [`mocha`](https://mochajs.org/) como framework de testing
+- [`chai`](https://www.chaijs.com/) para aserciones
+- [`supertest`](https://github.com/ladjs/supertest) para simular peticiones HTTP
+
+### 📁 Ubicación
+Las pruebas están en el archivo:
+
+```
+src/test/users.integration.test.js
+```
+
+### ▶️ Ejecutar pruebas
 
 ```bash
 npm test
 ```
 
-Los tests incluyen:
-- Casos exitosos de autenticación y uso de endpoints
-- Casos de error (usuarios no válidos, token incorrecto, etc.)
+---
+
+### ✅ Casos de éxito testeados
+
+- `GET /users`: devuelve un array de usuarios con `userName`
+- `POST /users`: crea un nuevo usuario
+- `PUT /users/update/all/:id`: actualiza completamente un usuario existente
+
+### ❌ Casos de error testeados
+
+- `GET /users/invalidEndpoint`: retorna `500 Internal Server Error`
+- `POST /users` con campos incorrectos o ya existentes: retorna `404 Not Found` con mensaje de error
+
+---
+
+### 📝 Notas
+
+- Asegurate de que el servidor esté corriendo en el puerto **8096** antes de ejecutar los tests.
+- Algunos tests usan un `userId` fijo:  
+  Si ese usuario no existe, el test `PUT` podría fallar.  
+  Para evitarlo, se recomienda crear un usuario de prueba antes o mockear la BD.
+
 
 ---
 
